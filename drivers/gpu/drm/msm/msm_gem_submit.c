@@ -394,10 +394,12 @@ int msm_ioctl_gem_submit(struct drm_device *dev, void *data,
 
 		size = submit_cmd.size + submit_cmd.submit_offset;
 
-		if (!submit_cmd.size || (size < submit_cmd.size) ||
-			(size > msm_obj->base.size)) {
-			DRM_ERROR("invalid cmdstream offset/size: %u/%u\n",
-				submit_cmd.submit_offset, submit_cmd.size);
+		if ((submit_cmd.size + submit_cmd.submit_offset) >
+				msm_obj->base.size) {
+			DRM_ERROR(
+			"invalid cmdstream size:%u, offset:%u, base_size:%zu\n",
+				submit_cmd.size, submit_cmd.submit_offset,
+				msm_obj->base.size);
 			ret = -EINVAL;
 			goto out;
 		}
