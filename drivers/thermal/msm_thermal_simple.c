@@ -282,7 +282,7 @@ static bool validate_cpu_freq(struct cpufreq_frequency_table *pos,
 		return true;
 	}
 
-	for (;; pos++) {
+	while (1) {
 		/* This freq exists in the table so it's definitely valid */
 		if (*freq == pos->frequency)
 			return false;
@@ -300,6 +300,8 @@ static bool validate_cpu_freq(struct cpufreq_frequency_table *pos,
 			*freq = next->frequency;
 			return true;
 		}
+
+		pos = next;
 	}
 
 	return false;
