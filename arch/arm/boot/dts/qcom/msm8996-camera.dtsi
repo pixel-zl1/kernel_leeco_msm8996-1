@@ -45,7 +45,7 @@
 			"ispif_ahb_clk", "csiphy_timer_src_clk",
 			"csiphy_timer_clk", "camss_ahb_clk",
 			"csiphy_3p_clk_src", "csi_phy_3p_clk";
-		/* G.S.: Adjust and update the API by zeroing third column. */
+		/* G.S.: Adjust 7th column to OEM value. */
 		qcom,clock-rates = <0 0 0 200000000 0 0 320000000 0>;
 	};
 
